@@ -1,12 +1,19 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     // Check if user is logged in
     const userData = localStorage.getItem('autolens-user');
     if (userData) {
@@ -14,7 +21,7 @@ export default function HomePage() {
     } else {
       router.push('/login');
     }
-  }, [router]);
+  }, [router, mounted]);
 
   // Show loading spinner while redirecting
   return (
