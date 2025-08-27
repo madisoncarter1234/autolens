@@ -690,13 +690,35 @@ export default function VehicleDetailPage() {
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <button
-                  onClick={() => setSyncConfig(Object.keys(syncConfig).reduce((acc, key) => ({...acc, [key]: true}), {}))}
+                  onClick={() => setSyncConfig({
+                    syncPricing: true,
+                    syncPhotos: true,
+                    syncVideos: true,
+                    syncDescription: true,
+                    syncFeatures: true,
+                    syncSpecs: true,
+                    syncStatus: true,
+                    syncColors: true,
+                    syncEngine: true,
+                    syncUrls: true
+                  })}
                   className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700"
                 >
                   Enable All
                 </button>
                 <button
-                  onClick={() => setSyncConfig(Object.keys(syncConfig).reduce((acc, key) => ({...acc, [key]: false}), {}))}
+                  onClick={() => setSyncConfig({
+                    syncPricing: false,
+                    syncPhotos: false,
+                    syncVideos: false,
+                    syncDescription: false,
+                    syncFeatures: false,
+                    syncSpecs: false,
+                    syncStatus: false,
+                    syncColors: false,
+                    syncEngine: false,
+                    syncUrls: false
+                  })}
                   className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700"
                 >
                   Disable All
